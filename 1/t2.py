@@ -6,11 +6,11 @@ def calc_grade(datas,grades,index):
     else:
         for i in range(index+1,ld):
             cost += datas[i][0] - datas[index][0]
+        distcost = 0
         for i in range(index+1,ld):
-            mycost = grades[i]
-            for j in range(index+1,i):
-                mycost += datas[j][0] - datas[index][0]
-            cost = min(mycost,cost)
+            #print (i,distcost)
+            cost = min(distcost + grades[i],cost)
+            distcost += datas[i][0]- datas[index][0]
     return cost + datas[index][1]
 n = int(input())
 ds = input().split()
